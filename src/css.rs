@@ -4,7 +4,26 @@
 
 // local
 
+//! Contains utilities related to CSS, incluing minification.
+//!
+
 /// Incredibly simplistic CSS minification.
+///
+/// ```
+///    let css = "
+///        body {
+///        background: red;
+///        color: green;
+///    }
+///    h1 {
+///        font-weight: lighter;
+///    }
+///    ";
+///    assert_eq!(
+///        minify_from_str(css),
+///        "body{background:red;color:green}h1{font-weight:lighter}"
+///    );
+/// ```
 pub fn minify_from_str(css: &str) -> String {
     let min_parts: Vec<&str> = css.split("\n").collect();
 
@@ -37,6 +56,16 @@ mod tests {
             minify_from_str(css),
             "body{background:red;color:green}h1{font-weight:lighter}"
         );
+    }
+
+    #[test]
+    fn with_css_strings() {
+        let css = "
+        body {
+            font-weight: \"lighter\"
+        }
+        ";
+        assert_eq!(minify_from_str(css), "body{font-weight:\"lighter\"}");
     }
 
     #[test]
