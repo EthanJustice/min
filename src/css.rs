@@ -29,6 +29,7 @@ pub fn minify_from_str(css: &str) -> String {
 
     // to regex or not to regex
     String::from(min_parts.join(""))
+        .replace("\r", "")
         .replace("\n", "")
         .replace("  ", "")
         .replace(": ", ":")
