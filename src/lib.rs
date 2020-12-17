@@ -11,6 +11,8 @@
 //! | [Docs.rs](https://docs.rs/min/latest)
 
 pub mod css;
+pub mod html;
+pub mod js;
 
 #[cfg(test)]
 mod tests {
